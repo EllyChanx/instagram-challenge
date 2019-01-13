@@ -1,7 +1,26 @@
 <p>user index</p>
 
-<div id="logout">
+<div class="navbar navbar-expand-lg navbar-light bg-light">
 
   <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Security", edit_user_registration_path %>
+  <%= link_to "Profile", edit_user_path(current_user) %>
 
 </div>
+
+<em> welcome <%= current_user.email %> </em>
+
+<% @users.each do |user| %>
+
+    <% if user.id != current_user.id%>
+    <ul id="eachUser">
+
+    <a href="<%=user_path(user)%>">
+      <div>
+        <em> <%= user.email %> </em>
+      </div>
+    </a>
+
+    <% end %>
+  </ul>
+<% end %>

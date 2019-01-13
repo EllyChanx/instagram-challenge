@@ -1,0 +1,12 @@
+<p>user edit</p>
+
+<%= link_to "Back", users_path%>
+
+
+<%= form_with model: @user, local: true do |f| %>
+  <div>
+    <%= f.label :Name %><br>
+    <%= f.text_field :user_name %>
+  </div>
+  <%= f.submit "Update Profile", :class => 'btn btn-primary btn-sm'%>
+<% end %>
