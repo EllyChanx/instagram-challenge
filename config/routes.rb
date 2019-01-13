@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
 
     resources :users
+    resources :posts
 
     root 'home#index'
     
