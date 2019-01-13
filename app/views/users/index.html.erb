@@ -10,6 +10,19 @@
 
 <em> welcome <%= current_user.email %> </em>
 
+<%= form_with scope: :post, url: posts_path,local: true do |form| %>
+
+  <p>Add Post</p>
+
+  <%= form.text_area :title, placeholder: "title" %><br>
+  <%= form.text_area :content, placeholder: "Post something ..." %><br>
+
+  <div>
+    <%= form.submit "Post" %>
+  </div>
+
+<% end %>
+
 <% @users.each do |user| %>
 
     <% if user.id != current_user.id%>
