@@ -23,6 +23,19 @@
 
 <% end %>
 
+<% @posts.each do |post| %>
+    <ul>
+    <a href="<%=post_path(post)%>">
+      <div>
+        <p> <%= post.title %> </p>
+        <p> <%= post.content %> </p>
+      </div>
+    </a>
+  </ul>
+<% end %>
+
+
+
 <% @users.each do |user| %>
 
     <% if user.id != current_user.id%>
