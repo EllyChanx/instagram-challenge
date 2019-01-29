@@ -62,4 +62,9 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  it 'destroys the requested post' do
+    post = Post.create!(content: 'content')
+    expect {delete :destroy, :params => { :id => post.to_param} }.to change(Post, :count).by(-1)
+  end
+
 end
