@@ -48,4 +48,18 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'PUT #update' do
+    it 'updates the requested post' do
+      post = Post.create!(content: 'content')
+      Post.any_instance.should_receive(:update).with( { 'content' => 'new content' } )
+      put :update, :params => { :id => post.to_param, :post => { 'content' => 'new content' } }
+    end
+
+    it 'update redirects to the post' do
+      post = Post.create!(content: 'content')
+      put :update, :params => {:id => post.to_param, :post => { 'content' => 'new content' } }
+      expect(response).to redirect_to(post) # to post is the specific post
+    end
+  end
+
 end
