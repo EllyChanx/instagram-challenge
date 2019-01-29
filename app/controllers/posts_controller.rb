@@ -5,6 +5,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @user = current_user
+  end
+
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
     if @post.save

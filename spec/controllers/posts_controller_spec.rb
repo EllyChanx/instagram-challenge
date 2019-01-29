@@ -39,5 +39,13 @@ RSpec.describe PostsController, type: :controller do
       assigns(:post).should eq(post)
     end
   end
+  
+  describe 'GET #show' do
+    it 'should show post' do
+      post = Post.create!(content: 'content')
+      get :show, params: { id: post.id }
+      expect(response.status).to eq(200)
+    end
+  end
 
 end
