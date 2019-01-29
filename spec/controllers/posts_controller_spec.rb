@@ -32,4 +32,12 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'GET #edit' do
+    it 'assigns the requested post as @post' do
+      post = Post.create!(content: 'content')
+      get :edit, params: { id: post.id }
+      assigns(:post).should eq(post)
+    end
+  end
+
 end
